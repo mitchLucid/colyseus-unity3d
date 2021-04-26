@@ -31,6 +31,7 @@ jobs:
         with:
           commit_message: "Updated semver via automated action."
           commit_options: '--no-verify --signoff'
+          push_options: '--force'
           branch: upm
       
             # You must ALWAYS checkout your repo so that actions in the workflow can use it.
