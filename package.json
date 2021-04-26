@@ -1,0 +1,28 @@
+{
+  "name": "io.colyseus.sdk",
+  "version": "0.14.5",
+  "displayName": "Colyseus Multiplayer SDK",
+  "description": "Colyseus Multiplayer SDK for Unity",
+  "unity": "2019.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/colyseus/colyseus-unity3d.git"
+  },
+  "author": {
+    "name": "Endel Dreyer",
+    "email": "endel.dreyer@gmail.com",
+    "url": "https://github.com/colyseus/colyseus-unity3d"
+  },
+  "keywords": [
+    "colyseus",
+    "multiplayer",
+    "netcode"
+  ],
+  "dependencies": {},
+  "samples": [{
+      "displayName": "Example",
+      "description": "Colyseus Example",
+      "path": "Assets/Colyseus/Example"
+  }]
+}
