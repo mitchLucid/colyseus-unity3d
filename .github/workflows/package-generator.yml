@@ -56,7 +56,7 @@ jobs:
         draft: false
         prerelease: true
     - name: Upload Release Asset
-      if: needs.release.outputs.released
+      if: steps.release.outputs.released
       id: upload-release-asset 
       uses: actions/upload-release-asset@v1
       env:
