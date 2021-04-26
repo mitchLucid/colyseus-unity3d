@@ -26,6 +26,6 @@
   "samples": [{
       "displayName": "Example",
       "description": "Colyseus Example",
-      "path": "Assets/Colyseus/Example"
+      "path": "Runtime/Example"
   }]
 }
