@@ -1,36 +1,40 @@
-name: Create Unity Package
+name: Release & Create Unity Package
 
 on:
   push:
-    branches: release/*
+    branches: master
    
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Extract branch name
-      shell: bash
-      run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/release/})"
-      id: extract_branch
     - name: Checkout Code
       uses: actions/checkout@v2
+    - uses: EndBug/version-check@v1
+      id: check
+      with:
+        file-name: package.json
+        diff-search: true
+    - name: Log when changed
+      if: steps.check.outputs.changed == 'true'
+      run: 'echo "Version change found in commit ${{ steps.check.outputs.commit }}! New version: ${{ steps.check.outputs.version }} (${{ steps.check.outputs.type }})"'
     - name: Gather files
       run: |
         echo "ColyseusArena-Plugin/Assets/Colyseus.meta" > metaList
         find ColyseusArena-Plugin/Assets/Colyseus/ -name \*.meta >> metaList
-    - name: Create Directory
-      run: mkdir Release
+    # - name: Create Directory
+    #   run: mkdir Release
     - name: Generate Unity Package
       id: build-package
       uses: pCYSl5EDgo/create-unitypackage@master
       with:
         package-path: 'Colyseus_Plugin.unitypackage'
         include-files: metaList
-    - name: Upload Package
-      uses: actions/upload-artifact@master
-      with:
-        path: ./Colyseus_Plugin.unitypackage
-        name: Colyseus_Plugin
+    # - name: Upload Package
+    #   uses: actions/upload-artifact@master
+    #   with:
+    #     path: ./Colyseus_Plugin.unitypackage
+    #     name: Colyseus_Plugin
     - name: Changelog
       uses: scottbrenner/generate-changelog-action@master
       id: Changelog
@@ -40,8 +44,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ steps.extract_branch.outputs.branch }}
-        release_name: ${{ steps.extract_branch.outputs.branch }}
+        tag_name: ${{ steps.check.outputs.version }}
+        release_name: ${{ steps.check.outputs.version }}
         body: |
             # Changes
             ${{ steps.Changelog.outputs.changelog }}
