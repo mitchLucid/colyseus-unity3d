@@ -1,12 +1,6 @@
-
 name: Update Unity UPM semantic versioning
 
-on: 
-  workflow_run:
-    workflows: ["Update Unity project semantic versioning"]
-    branches: [master]
-    types:
-      - completed
+on: [push]
 
 jobs:
   create:
@@ -21,7 +15,7 @@ jobs:
           ref: upm
 
       - name: Find UPM package.json & increment its version number
-        uses: AlexHolderDeveloper/UnityUPMSemver@v0.0.1 # Change vX.X.X to whatever tag is newer in the AlexHolderDeveloper/UnityUPMSemver repository.
+        uses: AlexHolderDeveloper/UnityUPMSemver@v1.0.0
         id: semver-update-upm
         with:
           semver-update-type: 'patch' # Change this string to any suitable string mentioned in the Inputs section of this action's readme to suit your needs.
@@ -45,7 +39,7 @@ jobs:
 
 
       - name: Find UPM package.json & increment its version number
-        uses: AlexHolderDeveloper/UnityUPMSemver@v0.0.1 # Change vX.X.X to whatever tag is newer in the AlexHolderDeveloper/UnityUPMSemver repository.
+        uses: AlexHolderDeveloper/UnityUPMSemver@v1.0.0 
         id: semver-update-master
         with:
           semver-update-type: 'patch' # Change this string to any suitable string mentioned in the Inputs section of this action's readme to suit your needs.
