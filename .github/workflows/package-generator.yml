@@ -15,7 +15,7 @@ jobs:
     - uses: EndBug/version-check@v1
       id: check
       with:
-        file-name: package.json
+        file-name: Assets/package.json
         diff-search: true
     - name: Log when changed
       if: steps.check.outputs.changed == 'true'
