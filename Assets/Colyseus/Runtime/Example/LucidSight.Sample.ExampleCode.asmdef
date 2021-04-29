@@ -1,0 +1,15 @@
+{
+    "name": "LucidSight.Sample.ExampleCode",
+    "references": [
+        "LucidSight.Runtime.ColyseusSDK"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
