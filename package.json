@@ -27,7 +27,7 @@
 		{
 			"displayName": "Example",
 			"description": "Colyseus Example",
-			"path": "Runtime/Example"
+			"path": "Runtime/Example~"
 		}
 	]
 }
